@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>🗺️ Карта рыболовных мест от Михалыча</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=5c8b83d1-0cfc-45c7-960c-0422eea91c23&lang=ru_RU"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #f5f5f5; }
+    .header { 
+        background: linear-gradient(135deg, #2c3e50, #3498db);
+        color: white; 
+        padding: 15px; 
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .header h1 { font-size: 1.5em; margin-bottom: 5px; }
+    .header p { font-size: 0.9em; opacity: 0.9; }
+    #map { 
+        width: 100%; 
+        height: calc(100vh - 80px);
+        border: none;
+    }
+    .legend {
+        position: absolute;
+        top: 90px;
+        right: 10px;
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+    .legend-item {
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
+        font-size: 12px;
+    }
+    @media (max-width: 768px) {
+        .header h1 { font-size: 1.2em; }
+        .legend { top: 70px; padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🗺️ Карта рыболовных мест от Михалыча</h1>
+    <p>Найдите лучшие места для рыбалки в вашем регионе</p>
+  </div>
+  
+  <div class="legend">
+    <div class="legend-item">
+      <div style="width: 16px; height: 16px; background: #7fff00; border-radius: 50%; margin-right: 8px;"></div>
+      <span>Бесплатные</span>
+    </div>
+    <div class="legend-item">
+      <div style="width: 16px; height: 16px; background: #ff69b4; border-radius: 50%; margin-right: 8px;"></div>
+      <span>Платные</span>
+    </div>
+  </div>
+  
+  <div id="map"></div>
+
+<script>
+ymaps.ready(init);
+
+function init() {
+    var map = new ymaps.Map("map", {
+        center: [55.7558, 37.6173],
+        zoom: 8,
+        controls: ['zoomControl', 'typeSelector', 'fullscreenControl']
+    });
+
+    var clusterer = new ymaps.Clusterer({
+        preset: 'islands#invertedVioletClusterIcons',
+        clusterDisableClickZoom: false,
+        clusterHideIconOnBalloonOpen: false,
+        geoObjectHideIconOnBalloonOpen: false
+    });
+
+    var places = [
+  {
+    "name": "Озеро Светлое",
+    "coords": [
+      55.7558,
+      37.6173
+    ],
+    "type": "free",
+    "description": "Щука, окунь, карась. Чистая вода, песчаный берег. Идеально для семейного отдыха.",
+    "fish": [
+      "щука",
+      "окунь",
+      "карась"
+    ],
+    "features": [
+      "бесплатно",
+      "палатка",
+      "костер"
+    ]
+  },
+  {
+    "name": "Пруд Рыбацкий",
+    "coords": [
+      55.7604,
+      37.6185
+    ],
+    "type": "paid",
+    "description": "Карп, форель, амур. Ухоженная территория, беседки, мангалы. Есть прокат снастей.",
+    "fish": [
+      "карп",
+      "форель",
+      "амур"
+    ],
+    "features": [
+      "платно",
+      "беседки",
+      "прокат"
+    ],
+    "price": "500 руб/день"
+  },
+  {
+    "name": "Река Быстрая",
+    "coords": [
+      55.75,
+      37.6
+    ],
+    "type": "free",
+    "description": "Лещ, плотва, судак, голавль. Сильное течение, нужны тяжелые грузила.",
+    "fish": [
+      "лещ",
+      "плотва",
+      "судак",
+      "голавль"
+    ],
+    "features": [
+      "бесплатно",
+      "течение",
+      "с берега"
+    ]
+  },
+  {
+    "name": "База 'Золотой Карп'",
+    "coords": [
+      55.77,
+      37.63
+    ],
+    "type": "paid",
+    "description": "Осетр, форель, карп. VIP зона, ресторан, гостиница. Высокий сервис.",
+    "fish": [
+      "осетр",
+      "форель",
+      "карп"
+    ],
+    "features": [
+      "платно",
+      "ресторан",
+      "гостиница"
+    ],
+    "price": "1500 руб/день"
+  },
+  {
+    "name": "Лесное озеро",
+    "coords": [
+      55.74,
+      37.59
+    ],
+    "type": "free",
+    "description": "Карась, линь, красноперка. Тихий уголок в лесу, дикая природа, уединение.",
+    "fish": [
+      "карась",
+      "линь",
+      "красноперка"
+    ],
+    "features": [
+      "бесплатно",
+      "лес",
+      "уединение"
+    ]
+  }
+];
+
+    places.forEach(p => {
+        let iconPreset = (p.type === 'paid') 
+            ? 'islands#darkPinkFishingCircleIcon'
+            : 'islands#greenFishingCircleIcon';
+
+        let balloonContent = `
+            <div style="padding: 10px; max-width: 300px;">
+                <h3 style="margin-bottom: 10px; color: #2c3e50;">${p.name}</h3>
+                <p><b>Тип:</b> <span style="color: ${p.type === 'paid' ? '#ff69b4' : '#7fff00'}; font-weight: bold;">
+                    ${p.type === 'paid' ? '🟣 Платное' : '🟢 Бесплатное'}
+                </span></p>
+                <p><b>Рыба:</b> ${p.fish ? p.fish.join(', ') : 'разная'}</p>
+                <p><b>Описание:</b> ${p.description}</p>
+                ${p.price ? "<p><b>Цена:</b> " + p.price + "</p>" : ""}
+                ${p.features ? "<p><b>Особенности:</b> " + p.features.join(', ') + "</p>" : ""}
+                <p style="margin-top: 10px; font-size: 12px; color: #666;">
+                    <b>Координаты:</b> ${p.coords[0].toFixed(4)}, ${p.coords[1].toFixed(4)}
+                </p>
+            </div>
+        `;
+
+        let placemark = new ymaps.Placemark(p.coords, {
+            balloonContent: balloonContent
+        }, {
+            preset: iconPreset,
+            balloonCloseButton: true,
+            hideIconOnBalloonOpen: false
+        });
+
+        clusterer.add(placemark);
+    });
+
+    map.geoObjects.add(clusterer);
+}
+</script>
+</body>
+</html>
