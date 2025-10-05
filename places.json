@@ -12,5 +12,33 @@
     },
     "approved_at": "2025-10-06T01:05:08.818665",
     "id": "acd0a8d6-9ed3-4b38-a490-0a6867f53ac1"
+  },
+  {
+    "coords": [
+      54.855833,
+      77.616459
+    ],
+    "description": "Тестовый 2",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_14975268-b356-49e9-9020-4740b156f6fc.jpg",
+    "source_link": {
+      "text": "Пользователь 906883156",
+      "url": "tg://user?id=906883156"
+    },
+    "approved_at": "2025-10-06T01:30:32.255918",
+    "id": "c7128487-a35e-4a6f-afd2-b6cb4bfd77ac"
+  },
+  {
+    "coords": [
+      59.654264,
+      39.486478
+    ],
+    "description": "",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_59de38fd-04c4-466f-b7b3-f02e1ef0087f.jpg",
+    "source_link": {
+      "text": "Пользователь 906883156",
+      "url": "tg://user?id=906883156"
+    },
+    "approved_at": "2025-10-06T01:40:05.195945",
+    "id": "869d7c7e-eb2c-4d64-b1c5-585276347563"
   }
 ]
