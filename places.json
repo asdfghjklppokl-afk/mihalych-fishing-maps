@@ -1,92 +1,17 @@
 [
   {
     "coords": [
-      63.606504,
-      101.504495
+      64.304937,
+      160.920574
     ],
-    "description": "123",
-    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_1d9ca2aa-aaa0-4a4d-85c1-acb7289f3372.jpg",
+    "description": "тест",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_38d70b97-ed4f-489d-94ef-327cbcfdb24b.jpg",
     "source_link": {
-      "text": "Пользователь 906883156",
+      "text": "Рыбак ID 906883156",
       "url": "tg://user?id=906883156"
     },
     "is_anonymous": false,
-    "approved_at": "2025-10-06T15:28:28.179203",
-    "id": "a123f0ba-bbd5-434a-ab30-8dbedce0308a"
-  },
-  {
-    "coords": [
-      55.871597,
-      68.425579
-    ],
-    "description": "456",
-    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_2a5ae5cf-e291-49eb-a39e-3035e4b9f1f3.jpg",
-    "source_link": {
-      "text": "Пользователь скрыт",
-      "url": ""
-    },
-    "is_anonymous": true,
-    "approved_at": "2025-10-06T15:29:49.388413",
-    "id": "0edd0f91-d381-4c39-896e-7a2a1b23a94b"
-  },
-  {
-    "coords": [
-      56.978534,
-      61.165064
-    ],
-    "description": "789",
-    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_6701d14b-a128-4f9f-85a5-7b26d564f0a0.jpg",
-    "source_link": {
-      "text": "Пользователь 906883156",
-      "url": "tg://user?id=906883156"
-    },
-    "is_anonymous": false,
-    "approved_at": "2025-10-06T15:36:30.060826",
-    "id": "6e478208-8a6a-4582-9f52-e68ba603eaba"
-  },
-  {
-    "coords": [
-      56.434294,
-      76.001429
-    ],
-    "description": "123",
-    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_472e83d1-ef84-462d-86b5-cbf89a621f2e.jpg",
-    "source_link": {
-      "text": "Пользователь 906883156",
-      "url": "tg://user?id=906883156"
-    },
-    "is_anonymous": false,
-    "approved_at": "2025-10-06T15:48:02.333076",
-    "id": "55bf0268-fc71-46b6-8e73-fcf1771f6f27"
-  },
-  {
-    "coords": [
-      71.996968,
-      73.336605
-    ],
-    "description": "123",
-    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_6aaec1b5-3d08-4c9b-a2cc-b979dbea8acd.jpg",
-    "source_link": {
-      "text": "Пользователь 906883156",
-      "url": "tg://user?id=906883156"
-    },
-    "is_anonymous": false,
-    "approved_at": "2025-10-06T16:15:08.270484",
-    "id": "e3f4ad89-a6b5-4361-82e0-0577b03ba4cb"
-  },
-  {
-    "coords": [
-      39.177927,
-      89.426333
-    ],
-    "description": "555",
-    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_a6bb9590-c51e-4fa8-a5f1-a5266e8424b9.jpg",
-    "source_link": {
-      "text": "Пользователь 906883156",
-      "url": "tg://user?id=906883156"
-    },
-    "is_anonymous": false,
-    "approved_at": "2025-10-06T16:29:13.088530",
-    "id": "cab1a771-85af-4988-acb6-152b6e90c9b6"
+    "approved_at": "2025-10-06T17:53:03.557141",
+    "id": "f35b387d-c488-4543-822b-c0394aac2dff"
   }
 ]
