@@ -82,5 +82,19 @@
     },
     "approved_at": "2025-10-06T10:42:33.291392",
     "id": "bb7a420b-9c48-4c2d-8d57-5e6f70bb785c"
+  },
+  {
+    "coords": [
+      49.319967,
+      73.352108
+    ],
+    "description": "111111",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_7fd8aaf0-85ce-49a3-bc45-a9ffb5e7f04f.jpg",
+    "source_link": {
+      "text": "Пользователь 906883156",
+      "url": "tg://user?id=906883156"
+    },
+    "approved_at": "2025-10-06T12:39:55.092734",
+    "id": "55d7bc1b-2d21-463f-98f0-41dc63a77dc8"
   }
 ]
