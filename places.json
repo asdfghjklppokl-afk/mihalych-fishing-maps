@@ -73,5 +73,20 @@
     "is_anonymous": false,
     "approved_at": "2025-10-06T16:15:08.270484",
     "id": "e3f4ad89-a6b5-4361-82e0-0577b03ba4cb"
+  },
+  {
+    "coords": [
+      39.177927,
+      89.426333
+    ],
+    "description": "555",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_a6bb9590-c51e-4fa8-a5f1-a5266e8424b9.jpg",
+    "source_link": {
+      "text": "Пользователь 906883156",
+      "url": "tg://user?id=906883156"
+    },
+    "is_anonymous": false,
+    "approved_at": "2025-10-06T16:29:13.088530",
+    "id": "cab1a771-85af-4988-acb6-152b6e90c9b6"
   }
 ]
