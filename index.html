@@ -1,84 +1,177 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>🗺️ Карта рыболовных мест от Михалыча</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Карта рыболовных мест - Михалыч</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=5c8b83d1-0cfc-45c7-960c-0422eea91c23&lang=ru_RU" type="text/javascript"></script>
     <style>
-        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        #map { height: 100vh; width: 100%; }
-        .balloon { max-width: 300px; padding: 10px; }
-        .balloon img { max-width: 100%; height: auto; border-radius: 5px; margin-bottom: 8px; }
-        .balloon-title { font-weight: bold; margin-bottom: 8px; color: #2c3e50; }
-        .balloon-description { margin: 8px 0; line-height: 1.4; font-size: 14px; }
-        .balloon-source { margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee; font-size: 12px; }
-        .balloon-source a { color: #3498db; text-decoration: none; }
-        .balloon-source a:hover { text-decoration: underline; }
-        .balloon-coords { font-size: 11px; color: #666; margin-top: 5px; }
-        .loading { 
-            position: absolute; 
-            top: 50%; 
-            left: 50%; 
-            transform: translate(-50%, -50%); 
-            background: white; 
-            padding: 20px; 
-            border-radius: 5px; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; }
+        .header { 
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white; 
+            padding: 10px;
+            text-align: center;
+        }
+        .header h1 { 
+            font-size: 0.8em;
+            margin-bottom: 5px; 
+        }
+        .header p { 
+            font-size: 0.6em;
+            opacity: 0.9; 
+        }
+        #map { 
+            width: 100%; 
+            height: calc(100vh - 80px);
+        }
+        .balloon-content {
+            max-width: 300px;
+            padding: 10px;
+        }
+        .balloon-photo {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+        }
+        .balloon-description {
+            margin-bottom: 8px;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+        .balloon-source {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+        }
+        .balloon-source a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .balloon-source a:hover {
+            text-decoration: underline;
+        }
+        .balloon-coords {
+            font-size: 11px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .anonymous-user {
+            color: #666;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>🗺️ Карта рыболовных мест от Михалыча</h1>
+        <p>Найдите лучшие места для рыбалки в вашем регионе</p>
+    </div>
+    
     <div id="map"></div>
-    <div id="loading" class="loading">Загрузка карты...</div>
 
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        const map = L.map('map').setView([55.7558, 37.6173], 5);
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
+    <script type="text/javascript">
+        let map;
+        let objectManager;
 
-        fetch('./places.json')
-            .then(response => {
-                if (!response.ok) throw new Error('Ошибка загрузки данных');
-                return response.json();
-            })
-            .then(places => {
-                document.getElementById('loading').style.display = 'none';
-                
-                places.forEach(place => {
-                    const { coords, description, photo_url, source_link } = place;
-                    
-                    let balloonContent = `<div class="balloon">
-                        <div class="balloon-title">🎣 Место для рыбалки</div>`;
-                    
-                    if (description) {
-                        balloonContent += `<div class="balloon-description">${description}</div>`;
-                    }
-                    
-                    if (photo_url) {
-                        balloonContent += `<img src="${photo_url}" alt="Фото места" onerror="this.style.display='none'" />`;
-                    }
-                    
-                    if (source_link) {
-                        balloonContent += `<div class="balloon-source">
-                            📍 <b>Добавил:</b> <a href="${source_link.url}" target="_blank" style="color: #3498db;">${source_link.text}</a>
-                        </div>`;
-                    }
-                    
-                    balloonContent += `<div class="balloon-coords">
-                        <b>Координаты:</b> ${coords[0].toFixed(6)}, ${coords[1].toFixed(6)}
-                    </div></div>`;
-                    
-                    L.marker(coords).addTo(map).bindPopup(balloonContent);
-                });
-            })
-            .catch(error => {
-                document.getElementById('loading').innerHTML = 'Ошибка загрузки данных';
+        ymaps.ready(init);
+
+        function init() {
+            map = new ymaps.Map('map', {
+                center: [55.7558, 37.6173],
+                zoom: 10
             });
+
+            objectManager = new ymaps.ObjectManager({
+                clusterize: true,
+                gridSize: 32,
+                clusterDisableClickZoom: true
+            });
+
+            objectManager.objects.options.set({
+                preset: 'islands#blueFishingCircleIcon',
+                balloonContentLayout: balloonLayout
+            });
+
+            objectManager.clusters.options.set({
+                preset: 'islands#blueClusterIcons'
+            });
+
+            map.geoObjects.add(objectManager);
+            loadFishingPlaces();
+        }
+
+        function loadFishingPlaces() {
+            fetch('./places.json')
+                .then(response => response.json())
+                .then(places => {
+                    const features = places.map(place => ({
+                        type: 'Feature',
+                        id: place.id || Math.random(),
+                        geometry: {
+                            type: 'Point',
+                            coordinates: place.coords
+                        },
+                        properties: {
+                            balloonContent: createBalloonContent(place),
+                            hintContent: '🎣 Место для рыбалки',
+                            ...place
+                        }
+                    }));
+
+                    objectManager.add(features);
+                })
+                .catch(error => {
+                    console.error('Ошибка загрузки данных:', error);
+                });
+        }
+
+        function createBalloonContent(place) {
+            let content = '<div class="balloon-content"><div style="font-weight: bold; margin-bottom: 8px; color: #2c3e50;">🎣 Место для рыбалки</div>';
+
+            if (place.description) {
+                // Экранирование HTML для защиты от XSS
+                const escapedDescription = place.description
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#x27;');
+                content += '<div class="balloon-description">' + escapedDescription + '</div>';
+            }
+
+            if (place.photo_url) {
+                // Безопасная вставка URL (только допустимые символы)
+                const safePhotoUrl = place.photo_url.replace(/[<>"']/g, '');
+                content += '<img src="' + safePhotoUrl + '" alt="Фото места" class="balloon-photo" onerror="this.style.display=\'none\'">';
+            }
+
+            if (place.source_link) {
+                if (place.is_anonymous) {
+                    // Анонимный пользователь
+                    content += '<div class="balloon-source"><span class="anonymous-user">👤 Пользователь скрыт</span></div>';
+                } else {
+                    // Публичный пользователь с ссылкой
+                    const safeUrl = place.source_link.url.replace(/[<>"']/g, '');
+                    const safeText = place.source_link.text
+                        .replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;');
+                    content += '<div class="balloon-source">📍 <b>Добавил:</b> <a href="' + safeUrl + '" target="_blank" style="color: #3498db;">' + safeText + '</a></div>';
+                }
+            }
+
+            content += '<div class="balloon-coords"><b>Координаты:</b> ' + place.coords[0].toFixed(6) + ', ' + place.coords[1].toFixed(6) + '</div></div>';
+
+            return content;
+            }
+
+        var balloonLayout = ymaps.templateLayoutFactory.createClass(
+            '<div class="balloon-content">$[properties.balloonContent]</div>'
+        );
     </script>
 </body>
 </html>
