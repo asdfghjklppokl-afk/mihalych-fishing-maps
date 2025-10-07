@@ -58,5 +58,20 @@
     "is_anonymous": true,
     "approved_at": "2025-10-07T08:35:48.754039",
     "id": "db2834cf-9e33-471d-a89b-06fd8e67390a"
+  },
+  {
+    "coords": [
+      66.347979,
+      25.268375
+    ],
+    "description": "Тест 2",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_7610069f-c2cd-444c-a083-e1580fbfcf8e.jpg",
+    "source_link": {
+      "text": "Рыбак ID 906883156",
+      "url": "tg://user?id=906883156"
+    },
+    "is_anonymous": false,
+    "approved_at": "2025-10-07T08:37:46.151350",
+    "id": "d83cfa21-7f80-4f6e-9a9c-6854fd2c77f0"
   }
 ]
