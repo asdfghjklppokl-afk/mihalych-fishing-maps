@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "coords": [
+      58.781658,
+      52.711284
+    ],
+    "description": "Проверка связи",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_53032747-d623-4012-b877-3add29ca8006.jpg",
+    "source_link": {
+      "text": "Знаток водоёма",
+      "url": ""
+    },
+    "is_anonymous": true,
+    "approved_at": "2025-10-11T11:54:51.109595",
+    "id": "481b137c-0a1a-4069-93b4-fddf8a86705a"
+  }
+]
