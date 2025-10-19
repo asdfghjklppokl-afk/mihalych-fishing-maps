@@ -13,5 +13,20 @@
     "is_anonymous": true,
     "approved_at": "2025-10-19T21:31:12.936803",
     "id": "a0e680fe-967a-46bd-8d5a-7c502c9669af"
+  },
+  {
+    "coords": [
+      53.038054,
+      45.140428
+    ],
+    "description": "Ловил на фидер, отлично провел день на воде!",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_6474cc49-591c-4dbb-b078-afbf85862261.jpg",
+    "source_link": {
+      "text": "Знаток водоёма",
+      "url": ""
+    },
+    "is_anonymous": true,
+    "approved_at": "2025-10-19T22:26:13.851778",
+    "id": "d02c0a5e-0930-467d-84bb-636f48a7901a"
   }
 ]
