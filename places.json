@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "coords": [
+      53.145418,
+      45.042037
+    ],
+    "description": "Ловил на кукурузный макушатник, в утренние часы",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_d77a0235-4927-4740-8449-1db22a2960b3.jpg",
+    "source_link": {
+      "text": "Знаток водоёма",
+      "url": ""
+    },
+    "is_anonymous": true,
+    "approved_at": "2025-10-19T21:31:12.936803",
+    "id": "a0e680fe-967a-46bd-8d5a-7c502c9669af"
+  }
+]
