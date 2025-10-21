@@ -13,5 +13,20 @@
     "is_anonymous": true,
     "approved_at": "2025-10-20T16:04:37.054325",
     "id": "de15c61f-59ae-4718-8e81-4d79ffeba2f7"
+  },
+  {
+    "coords": [
+      62.355374,
+      54.20041
+    ],
+    "description": "тест",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_64fb032d-8eb4-42bf-a55d-ae91842ad280.jpg",
+    "source_link": {
+      "text": "Знаток водоёма",
+      "url": ""
+    },
+    "is_anonymous": true,
+    "approved_at": "2025-10-21T14:48:30.820148",
+    "id": "8eca65d1-eb63-4310-b2f6-81489c3409e4"
   }
 ]
