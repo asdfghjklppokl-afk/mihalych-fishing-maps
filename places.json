@@ -13,5 +13,20 @@
     "is_anonymous": true,
     "approved_at": "2025-10-20T16:04:37.054325",
     "id": "de15c61f-59ae-4718-8e81-4d79ffeba2f7"
+  },
+  {
+    "coords": [
+      52.383425,
+      39.692251
+    ],
+    "description": "Ловили на кукурузный макушатник, попадался такой улов",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/906883156_3a5c60e9-c6ad-4d68-9dc5-295d09187d31.jpg",
+    "source_link": {
+      "text": "Знаток водоёма",
+      "url": ""
+    },
+    "is_anonymous": true,
+    "approved_at": "2025-10-22T10:44:09.853318",
+    "id": "3e8c64ec-fab5-4a51-b2e6-aabebce66a16"
   }
 ]
