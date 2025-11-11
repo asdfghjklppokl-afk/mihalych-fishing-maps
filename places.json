@@ -73,5 +73,20 @@
     "is_anonymous": true,
     "approved_at": "2025-11-02T16:01:44.692996",
     "id": "25598af4-5d2e-47a9-a9df-5063759d0d8b"
+  },
+  {
+    "coords": [
+      47.179928,
+      39.337983
+    ],
+    "description": "Пирс в рогожкино, дистанция метров 30-40. Всего взялось 3 стерлядки, 2 сазанчика (отпущены) и один рыбец. Прям под пирсом брала хорошая краснопёрка и густера.",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/6266765072_d61341b5-48ba-41f5-acf0-5648881d99d9.jpg",
+    "source_link": {
+      "text": "👤 Знаток водоёма",
+      "url": ""
+    },
+    "is_anonymous": false,
+    "approved_at": "2025-11-11T10:00:33.604290",
+    "id": "54a8ddde-abca-4115-ae31-886b12684310"
   }
 ]
