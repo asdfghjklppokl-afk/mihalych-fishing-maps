@@ -92,7 +92,7 @@
   {
     "coords": [
       56.101121,
-      47.378530
+      47.37853
     ],
     "description": "В камышах отлично клевало, попадалось плотва, сторожка. ловили на опарыша, течение отличное, бесплатно",
     "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/7871487785_e5afeec3-3eb8-498e-8077-82314954398b.jpg",
@@ -103,5 +103,20 @@
     "is_anonymous": true,
     "approved_at": "2026-06-21T14:17:51.503913",
     "id": "8e235848-c60f-4e97-8f70-5f484d33e83b"
+  },
+  {
+    "coords": [
+      -81.066179,
+      18.313988
+    ],
+    "description": "Тест.\nТест.\nТест.\nТест.\nТест.",
+    "photo_url": "https://asdfghjklppokl-afk.github.io/mihalych-fishing-maps/upload/8590005134_dd3100f6-29d3-48a9-b187-8b94414b273b.jpg",
+    "source_link": {
+      "text": "👤 Знаток водоёма",
+      "url": ""
+    },
+    "is_anonymous": true,
+    "approved_at": "2026-09-20T17:25:15.962405",
+    "id": "b8106bfc-2708-4807-9538-ddde6d6c0f2b"
   }
 ]
